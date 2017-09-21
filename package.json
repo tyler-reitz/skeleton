@@ -7,7 +7,7 @@
     "build": "webpack",
     "watch": "webpack -w",
     "dev-server": "webpack-dev-server --open",
-    "start": "node server.js && webpack -w"
+    "start": "nodemon server.js"
   },
   "keywords": [],
   "author": "Tyler Reitz <tdreitz@gmail.com>",
@@ -27,6 +27,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
+    "concurrently": "^3.5.0",
     "nodemon": "^1.11.0",
     "webpack": "^3.5.5",
     "webpack-dev-server": "^2.7.1"
