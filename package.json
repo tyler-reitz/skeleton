@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "watch": "webpack -w",
-    "dev-server": "rm -rf dist && webpack-dev-server --open",
+    "dev-server": "webpack-dev-server --open",
     "start": "node server.js && webpack -w"
   },
   "keywords": [],
