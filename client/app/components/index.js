@@ -1,19 +1,102 @@
 import React, { Component } from 'react'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Redirect,
+  withRouter
+} from 'react-router-dom'
 
-class Main extends Component {
+const Main = () => (
+  <Router>
+    <div>
+      <AuthButton />
+      <ul>
+        <li>
+          <Link to='/public'>Public Page</Link>
+        </li>
+        <li>
+          <Link to='/protected'>Protected Page</Link>
+        </li>
+      </ul>
+      <hr />
+      <Route path="/public" component={Public} />
+      <PrivateRoute path="/protected" component={Protected} />
+      <Route path="/login" component={Login} />
+    </div>
+  </Router>
+)
 
-  constructor(props) {
-    super(props)
-    this.state = {
-      prop: 'value'
-    }
+const fakeAuth = {
+  isAuthenticated: false,
+  authenticate(cb) {
+    this.isAuthenticated = true
+    setTimeout(cb, 100)
+  },
+  signout(cb) {
+    this.isAuthenticated = false
+    setTimeout(cb, 100)
+  }
+}
+
+const AuthButton = withRouter(({ history }) => (
+  fakeAuth.isAuthenticated ? (
+    <p>
+      Welcome! <button onClick={() => {
+        fakeAuth.signout(() => history.push('/'))
+      }}>Sign Out</button>
+    </p>
+  ) : (
+    <p>You are not logged in.</p>  
+  )
+))
+
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route { ...rest } render={ props => (
+    fakeAuth.isAuthenticated ? (
+      <Component { ...props } />
+    ) : (
+      <Redirect to={ {
+        pathname: '/login',
+        state: { from: props.location }  
+      } } />  
+    )
+  ) } />
+)
+
+const Public = () => <h3>Public</h3>
+const Protected = () => <h3>Protected</h3>
+
+class Login extends Component {
+
+  state = {
+    redirectToReferrer: false
+  }
+  
+  login = () => {
+    fakeAuth.authenticate(() => {
+      this.setState({ redirectToReferrer: true })
+    })
   }
 
   render() {
-    return <div>
-        <h1>Hello</h1>
+    const { from } = this.props.location.state || { from: { pathname: '/' } }
+    const { redirectToReferrer } = this.state
+
+    if (redirectToReferrer) {
+      return (
+        <Redirect to={from} />
+      )
+    }
+
+    return (
+      <div>
+        <p>You must log in to view the page at {from.pathname}</p>
+        <button onClick={this.login} >Log In</button>
       </div>
+    )
   }
+  
 }
 
 export default Main
