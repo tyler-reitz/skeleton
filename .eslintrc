@@ -26,5 +26,8 @@
     "no-unexpected-multiline": 2,
     "jsx-a11y/media-has-caption": 0
     // "compat/compat": 2
+  },
+  "settings": {
+    "polyfills": ["fetch"]
   }
 }
