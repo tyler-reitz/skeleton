@@ -1,0 +1,6 @@
+[ignore]
+.*\.test\.js
+.*/node_modules/eslint-plugin-jsx-a11y
+
+[options]
+suppress_comment= \\(.\\|\n\\)*\\flow-disable-next-line
