@@ -4,36 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "watch": "webpack -w",
-    "dev-server": "webpack-dev-server --open",
-    "serve": "nodemon server.js",
-    "start": "concurrently 'nodemon server.js' 'webpack-dev-server --open'"
+    "start": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tyler-reitz/skeleton.git"
   },
   "keywords": [],
   "author": "Tyler Reitz <tdreitz@gmail.com>",
   "license": "ISC",
-  "dependencies": {
-    "axios": "^0.16.2",
-    "body-parser": "^1.17.2",
-    "express": "^4.15.3",
-    "mongoose": "^4.11.9",
-    "morgan": "^1.8.2",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
-    "react-router-dom": "^4.2.2"
+  "bugs": {
+    "url": "https://github.com/tyler-reitz/skeleton/issues"
   },
-  "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.1",
-    "babel-plugin-syntax-object-rest-spread": "^6.13.0",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-preset-env": "^1.6.0",
-    "babel-preset-react": "^6.24.1",
-    "concurrently": "^3.5.0",
-    "nodemon": "^1.11.0",
-    "webpack": "^3.5.5",
-    "webpack-dev-server": "^2.7.1"
-  }
+  "homepage": "https://github.com/tyler-reitz/skeleton#readme",
+  "dependencies": {}
 }
