@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box
+}
+
+html,
+body {
+  margin: 0
+}
+
+body {
+  widows: 960px;
+  margin: auto;
+  font-family: sans-serif;
+}
+
+h1 {
+  color: limegreen;
+}
